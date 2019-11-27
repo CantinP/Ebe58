@@ -1,0 +1,153 @@
+.inpText {
+  margin: auto;
+  width: 15em;
+  padding: 0.5em 0.25em;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+  resize: none;
+}
+
+.inpBtn {
+  margin: auto;
+  padding: 0.5em;
+  background-color: black;
+  border: 0px solid;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: white;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+label {
+  display: block;
+  margin: auto;
+  color: black;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 0.8em;
+}
+
+.remember {
+  display: flex;
+  flex-direction: row;
+  width: 14em;
+  margin: auto;
+  height: auto;
+  align-content: center;
+}
+
+div.rememb {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  flex-wrap: wrap;
+  margin-left: -1em;
+  height: auto;
+  align-content: center;
+  width: auto;
+}
+
+#remember {
+  margin: auto;
+  margin-right: 1em;
+}
+
+.checkbox {
+  margin-left: 1em;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 1.5em;
+  width: 1.5em;
+  box-sizing: border-box;
+  background-size: cover;
+  filter: grayscale(80%);
+  box-shadow: 2px 2px 3px rgba(black, 0.5);
+  margin-right: 0.5em;
+}
+
+form {
+  height: auto;
+  width: 80%;
+  min-width: 22em;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  a {
+    color: black;
+    margin: auto;
+    width: 7.5em;
+  }
+
+  img {
+    width: auto;
+    height: 8em;
+  }
+
+  embed {
+    min-width: 60%;
+    width: auto;
+    height: 50em;
+  }
+
+  h1 {
+    margin: auto;
+  }
+}
+
+h1 {
+  margin: auto;
+  text-align: center;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + label,
+label:hover {
+  filter: grayscale(0%) saturate(150%);
+}
+
+input[type="checkbox"]:checked + label,
+label:hover {
+  filter: grayscale(0%) saturate(150%);
+}
+
+#radio-oui + label {
+  padding: 0 0.25em;
+  background-image: url('/img/radio.png');
+}
+
+#radio-oui:checked + label {
+  box-shadow: 0px 0px 0px rgba(black, 0.5);
+  background-image: url('/img/radio-oui.png');
+}
+
+textarea {
+  max-width: 30em;
+  width: 100%;
+  height: 8em;
+  margin: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding: 0.75em;
+  resize: none;
+}

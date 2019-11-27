@@ -1,0 +1,413 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+main {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+
+  a {
+    margin-left: 0.5em;
+    color: blue;
+    font-weight: 500;
+  }
+}
+
+p {
+  flex-wrap: wrap;
+  padding: 0.5em;
+  color: black;
+}
+
+.carousel {
+  margin: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  width: 80%;
+}
+
+.carousel-item {
+  width: 100%;
+  height: auto;
+  max-height: 24em;
+}
+
+part {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 15em;
+
+  section {
+    a {
+      font-size: 1em;
+    }
+  }
+}
+
+img {
+  width: 4em;
+  height: 4em;
+}
+
+.desktop {
+  display: none;
+
+  a {
+    margin: 0.5em 1em;
+  }
+}
+
+.mobile {
+  display: flex;
+
+  a {
+    width: auto;
+  }
+}
+
+section {
+  width: 90%;
+  margin: auto;
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+
+  a:hover {
+    p {
+      color: #D87113;
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+
+    a {
+      margin: auto;
+      margin-left: 0;
+
+      &.download {
+        width: auto;
+        margin-bottom: 1em;
+      }
+
+      p {
+        margin: auto;
+      }
+    }
+
+    &.rs {
+      a {
+        margin-left: auto;
+      }
+    }
+
+    embed {
+      margin-top: 2em;
+      min-width: 40%;
+      width: auto;
+      height: 30em;
+    }
+
+    article {
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.activities-btn {
+  max-width: 20em;
+  height: auto;
+  max-height: 10em;
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  p {
+    position: absolute;
+    display: block;
+    width: 100%;
+    line-height: 1em;
+    padding-top: 4.5em;
+    padding-bottom: 4.5em;
+    max-width: 20em;
+    text-align: center;
+    opacity: 0.85;
+    background-color: white;
+    color: white;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    max-height: 10em;
+  }
+
+  &:hover {
+    p {
+      opacity: 0.85;
+      background-color: white;
+      color: white;
+    }
+
+    img {
+      opacity: 0.55;
+    }
+  }
+}
+
+.activities-sidebar {
+  max-width: 19em;
+  height: auto;
+  max-height: 11em;
+  margin: auto;
+  margin-top: 1em;
+
+  p {
+    opacity: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    line-height: 1em;
+    padding-top: 5em;
+    padding-bottom: 5em;
+    max-width: 19em;
+    text-align: center;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+
+  &:hover {
+    p {
+      opacity: 0.85;
+      background-color: white;
+      color: black;
+    }
+
+    img {
+      opacity: 0.55;
+    }
+  }
+}
+
+.banner {
+  width: 100%;
+  height: auto;
+}
+
+.margin {
+  margin: auto;
+}
+
+a {
+  margin: auto;
+  display: flex;
+  color: blue;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: none;
+    color: #D87113;
+  }
+}
+
+.btnBackOffice {
+  margin: auto;
+  width: 8em;
+  height: 8em;
+  background-color: darkorange;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: black;
+  margin: 0.3em;
+  box-shadow: 0.2em 0.2em 0.3em 0 rgba(0, 0, 0, 0.35);
+
+  &:active {
+    box-shadow: 0 0 0;
+  }
+
+  &:hover {
+    background-color: green;
+    color: white;
+    transition: 0.5s;
+  }
+}
+
+div.backOffice {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 85%;
+  height: auto;
+  margin: auto;
+  margin-top: 4em;
+  justify-content: space-around;
+
+  a {
+    width: auto;
+  }
+}
+
+.textUpdate {
+  margin: auto;
+}
+
+img.product {
+  width: 10em;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.labelSocial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 4em;
+  width: 4em;
+  box-sizing: border-box;
+  background-size: cover;
+  box-shadow: 0.3em 0.3em 0.4em rgba(black, 0.5);
+  margin-right: 0.3em;
+  margin-left: 0.3em;
+}
+
+#radio-twitter + label {
+  padding: 0 0.25em;
+  background-image: url('/img/twitter.png');
+}
+
+#radio-twitter:checked + label {
+  box-shadow: 0px 0px 0px rgba(black, 0.5);
+  border: 3px solid black;
+  background-image: url('/img/twitter.png');
+}
+
+#radio-facebook + label {
+  padding: 0 0.25em;
+  background-image: url('/img/facebook.png');
+}
+
+#radio-facebook:checked + label {
+  box-shadow: 0px 0px 0px rgba(black, 0.5);
+  border: 3px solid black;
+  background-image: url('/img/facebook.png');
+}
+
+#radio-youtube + label {
+  padding: 0 0.25em;
+  background-image: url('/img/youtube.png');
+}
+
+#radio-youtube:checked + label {
+  box-shadow: 0px 0px 0px rgba(black, 0.5);
+  border: 3px solid black;
+  background-image: url('/img/youtube.png');
+}
+
+#radio-twitch + label {
+  padding: 0 0.25em;
+  background-image: url('/img/twitch.png');
+}
+
+#radio-twitch:checked + label {
+  box-shadow: 0px 0px 0px rgba(black, 0.5);
+  border: 3px solid black;
+  background-image: url('/img/twitch.png');
+}
+
+#radio-linkedin + label {
+  padding: 0 0.25em;
+  background-image: url('/img/linkedin.png');
+}
+
+#radio-linkedin:checked + label {
+  box-shadow: 0px 0px 0px rgba(black, 0.5);
+  border: 3px solid black;
+  background-image: url('/img/linkedin.png');
+}
+
+#radio-instagram + label {
+  padding: 0 0.25em;
+  background-image: url('/img/instagram.png');
+}
+
+#radio-instagram:checked + label {
+  box-shadow: 0px 0px 0px rgba(black, 0.5);
+  border: 3px solid black;
+  background-image: url('/img/instagram.png');
+}
+
+.margin {
+  margin: auto;
+}
+
+div.margin {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid black;
+
+  &:only-of-type {
+    border-bottom: 0px solid transparent;
+  }
+}
+
+div.margin a {
+  display: flex;
+  flex-direction: column;
+}
+
+article.home {
+  width: 95%;
+  margin: auto;
+
+  a,
+  img {
+    display: flex;
+    margin: auto;
+  }
+}
+
+@import 'form';

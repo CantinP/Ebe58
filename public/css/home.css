@@ -1,0 +1,673 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-top: 0;
+  margin-bottom: auto;
+}
+
+column section a {
+  width: 90%;
+}
+
+#headerLink {
+  display: flex;
+  flex-direction: row;
+  color: black;
+}
+
+header {
+  top: 0;
+  margin-top: 1em;
+  margin-bottom: auto;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  width: 100%;
+  margin-top: 0.5em;
+  justify-content: space-around;
+}
+
+.form-inline {
+  display: none;
+}
+
+.rs {
+  display: none;
+  width: 25em;
+}
+
+#headerSlogan {
+  text-align: center;
+  font-size: 1.15em;
+  font-family: 'Roboto', sans-serif;
+  margin: auto;
+  align-items: center;
+  font-style: italic;
+  font-weight: bold;
+}
+
+#headerSlogan > span {
+  margin: auto;
+}
+
+#headerSlogan a {
+  width: auto;
+  margin-left: 1em;
+  margin-right: 2em;
+}
+
+/*font face social networks*/
+.icon-facebook {
+  width: 3em;
+  height: 3em;
+}
+
+/*font face social networks*/
+.icon-twitter {
+  width: 3em;
+  height: 3em;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+}
+
+.bg-light {
+  background-color: green !important;
+  margin-bottom: 0.5em;
+}
+
+.navbar-toggler {
+  background-color: white;
+}
+
+.nav-link {
+  color: white !important;
+  background-color: green !important;
+}
+
+.nav-link:hover {
+  color: darkorange !important;
+}
+
+.nav-item {
+  margin: auto !important;
+}
+
+.navbar-nav {
+  margin: auto;
+  width: 90%;
+}
+
+header section {
+  width: 100%;
+  margin-top: auto;
+}
+
+section {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 21em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.col-lg.top.column {}
+
+sidebar a {
+  margin-bottom: 0.5em;
+  margin-top: -0.5em;
+}
+
+.sidebar-title {
+  color: darkorange;
+}
+
+h3 {
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: left;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  color: green;
+  margin-top: 1em;
+}
+
+right {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9em;
+}
+
+div {
+  display: flex;
+  flex-direction: row;
+}
+
+.activities-img {
+  min-width: 20em;
+  width: 90%;
+  max-width: 85em;
+  height: auto;
+  margin: auto;
+}
+
+.news-img {
+  width: auto;
+  max-width: 70%;
+  height: auto;
+  max-height: 15em;
+  margin: auto;
+}
+
+.edito {
+  width: 100%;
+  height: auto;
+  background-color: lightgreen;
+  margin: auto;
+  margin-right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  margin-top: 0px !important;
+}
+
+.edito p {
+  padding: 0.5em;
+  font-size: 0.9em;
+  text-align: justify;
+  margin: auto;
+  margin-left: 0;
+}
+
+.desktop {
+  display: none;
+}
+
+.mobile {
+  display: flex;
+}
+
+.margin {
+  margin: auto;
+}
+
+.space {
+  display: none;
+  height: auto;
+  flex-direction: row;
+}
+
+.space > a {
+  color: green !important;
+  font-weight: 500;
+  margin: 0.5em;
+}
+
+.space p {
+  background-color: green;
+  padding: 0.5em;
+  color: white;
+  display: block;
+  width: 8em;
+}
+
+.space-mobile {
+  display: flex;
+  margin: auto;
+  width: 100%;
+  max-width: 22em;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.space-mobile > a {
+  color: green !important;
+  font-weight: 500;
+  margin: 0.25em;
+  text-align: center;
+}
+
+.space-mobile > p {
+  background-color: green;
+  padding: 0.5em;
+  color: white;
+  margin-bottom: 0;
+  margin-right: 0.25em;
+  margin-left: 0;
+}
+
+.form-inline {
+  display: none;
+}
+
+.rs {
+  display: none;
+  flex-direction: row;
+}
+
+.form-inline-mobile {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  align-items: center;
+}
+
+.rs-mobile {
+  display: flex;
+  margin: auto;
+}
+
+.bottom {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.burger {
+  width: 1.8em;
+  height: 0.3em;
+  margin: auto;
+  background-color: #D87113;
+  border: 1px solid #D87113;
+  box-sizing: border-box;
+}
+
+.burger:first-of-type {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+.burger:last-of-type {
+  margin-bottom: 0;
+  margin-top: 0.25em;
+}
+
+.menu-burger {
+  display: flex;
+  flex-direction: column;
+}
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: none !important;
+}
+
+.navbar-light .navbar-toggler {
+  color: rgba(0, 0, 0, 0) !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+  color: white !important;
+}
+
+.banner-news {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  max-width: 860px;
+}
+
+.margin {
+  margin: auto;
+}
+
+a {
+  color: blue !important;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+a:visited {
+  color: slateblue;
+}
+
+a.nav-link {
+  font-size: 1em;
+  margin: auto;
+}
+
+a:hover {
+  color: darkorange !important;
+  text-decoration: none;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  max-width: 22em;
+  flex-wrap: wrap;
+  color: white;
+  text-align: -webkit-center;
+  margin: auto;
+  justify-content: space-around;
+}
+
+footer section {
+  flex-wrap: wrap;
+  text-align: center;
+  align-content: center;
+  margin: auto;
+}
+
+footer section a {
+  color: green !important;
+  border-right: 1px solid rgba(00, 00, 00, 0.3);
+  text-align: center;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin: 0 !important;
+  margin-top: 0.5em !important;
+  margin-bottom: 0.5em !important;
+}
+
+footer section p {
+  display: flex;
+  margin: auto;
+  text-align: center;
+}
+
+a.less {
+  display: none;
+}
+
+footer section {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin-left: 0;
+  margin-right: auto;
+  margin-top: 0;
+  align-content: center;
+  align-items: center;
+}
+
+footer p {
+  color: black;
+  text-align: center;
+  display: block;
+  margin-bottom: 0px !important;
+}
+
+.logo {
+  height: 4.5em;
+  width: 4.5em;
+}
+
+hr {
+  background-color: green;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+#ebeLogo {
+  width: auto;
+  max-height: 4em;
+  margin: auto;
+  margin-bottom: 0.3em;
+  margin-top: 0.3em;
+}
+
+.pdf {
+  height: 50em !important;
+  display: flex;
+}
+
+.activitie p {
+  text-align: -webkit-center;
+  text-align: center;
+}
+
+.activitie p:last-of-type {
+  text-align: -webkit-left;
+  text-align: left;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+  align-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+row p {
+  width: 90%;
+}
+
+.column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.banner-activ {
+  width: 90%;
+  height: auto;
+  max-height: 9em;
+  margin: auto;
+  margin-bottom: 2em;
+}
+
+h5 {
+  font-size: 2em;
+  background-color: green;
+  width: 100%;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  color: white;
+  margin-top: 1em;
+  text-align: center;
+}
+
+sidebar article {
+  margin-bottom: 1em;
+  height: auto;
+  text-align: left;
+}
+
+sidebar article a {
+  height: auto;
+  max-height: 14em;
+  margin-left: 0;
+}
+
+sidebar article p {
+  margin-bottom: 0.25em;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+span.error {
+  color: red;
+  text-align: center;
+  margin: auto;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  .form-inline {
+    display: flex;
+  }
+
+  .rs {
+    display: flex;
+  }
+
+  .form-inline-mobile {
+    display: none;
+  }
+
+  .rs-mobile {
+    display: none;
+  }
+
+  div.rememb {
+    margin-left: auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .desktop {
+    display: flex;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  #headerSlogan {
+    font-size: 2.3em;
+    height: 2.8em;
+  }
+
+  section {
+    flex-direction: row;
+  }
+
+  #ebeLogo {
+    max-height: 2.2em;
+  }
+
+  sidebar {
+    max-width: 22em;
+    height: auto;
+  }
+
+  row p {
+    width: 60%;
+  }
+
+  footer {
+    max-width: 24em;
+  }
+}
+
+@media screen and (min-width: 992px) {
+
+  .space {
+    display: flex;
+  }
+
+  .space-mobile {
+    display: none;
+  }
+
+  .bottom {
+    display: none;
+  }
+
+  body {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+  }
+
+  footer {
+    bottom: 0;
+    width: 100%;
+    max-width: 30em;
+    flex-wrap: wrap;
+    color: white;
+    text-align: -webkit-center;
+  }
+
+  .activities-btn p {
+    opacity: 0;
+    padding-top: 6.5em;
+    padding-bottom: 6.5em;
+    width: 100%;
+    height: 100%;
+    max-height: 14em;
+    max-width: 25em;
+  }
+
+  .activities-btn {
+    max-width: 25em;
+    height: auto;
+    max-height: 14em;
+  }
+
+  .activities-btn img {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    max-height: 14em;
+  }
+
+  .banner-activ {
+    width: 30em;
+  }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+  row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+  }
+
+  container {
+    flex-direction: row;
+    width: 97.5%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+}
