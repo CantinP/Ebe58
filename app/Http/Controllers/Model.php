@@ -8,7 +8,7 @@ function viewPartner(){
 }
 
 function profil($token){
-  $sql = "SELECT DISTINCT id, name, avatar, email FROM users WHERE password = '$token'";
+  $sql = "SELECT DISTINCT id, name, avatar, email FROM ebe58_users WHERE password = '$token'";
   $result =\DB::select($sql);
 
   if (!empty($result)) {
@@ -122,7 +122,7 @@ function activityDelete($id){
 
 function informations($password, $type) {
 
-  $sql = "SELECT id, name, email FROM users WHERE password = '$password'";
+  $sql = "SELECT id, name, email FROM ebe58_users WHERE password = '$password'";
   $result =\DB::select($sql);
 
   $id = $result[0]->id;
@@ -172,18 +172,18 @@ function infoUpdate($name, $oldEmail, $email, $address, $zip, $city, $service){
 		\DB::update($sql);
 	}
 
-	$sql = "UPDATE users SET name = '$name', email = '$email' WHERE email = '$oldEmail'";
+	$sql = "UPDATE ebe58_users SET name = '$name', email = '$email' WHERE email = '$oldEmail'";
 	\DB::update($sql);
 }
 
 function exist($mail) {
-  $sql = "SELECT email FROM users WHERE email = '$mail'";
+  $sql = "SELECT email FROM ebe58_users WHERE email = '$mail'";
 	$result = \DB::select($sql);
 	return (!empty($result));
 }
 
 function verifyPassword($email) {
-	$sql = "SELECT password FROM users WHERE users.email = '$email'";
+	$sql = "SELECT password FROM ebe58_users WHERE users.email = '$email'";
 	$result = \DB::select($sql);
 
 	$rPassword = $result[0]->password;
@@ -191,65 +191,65 @@ function verifyPassword($email) {
 }
 
 function socialModify($id){
-  $sql = "SELECT * FROM social WHERE id = '$id'";
+  $sql = "SELECT * FROM ebe58_social WHERE id = '$id'";
   $result =\DB::select($sql)[0];
 
   return $result;
 }
 
 function socialUp($id, $name, $remember, $link){
-  $sql = "UPDATE social SET name = '$name', link = '$link', logo = '$remember' WHERE id = '$id'";
+  $sql = "UPDATE ebe58_social SET name = '$name', link = '$link', logo = '$remember' WHERE id = '$id'";
   \DB::update($sql);
 }
 
 function deleteSocial($id){
-  $sql = "DELETE FROM social WHERE id = '$id'";
+  $sql = "DELETE FROM ebe58_social WHERE id = '$id'";
   \DB::delete($sql);
 }
 
 function createSocial($name, $remember, $link){
-  $sql = "INSERT INTO social (name, link, logo) VALUES ('$name', '$link', '$remember')";
+  $sql = "INSERT INTO ebe58_social (name, link, logo) VALUES ('$name', '$link', '$remember')";
   \DB::insert($sql);
 }
 
 function socialDisp(){
-  $sql = "SELECT * FROM social";
+  $sql = "SELECT * FROM ebe58_social";
   $result =\DB::select($sql);
 
   return $result;
 }
 
 function createNews($title, $text, $image, $id_users, $link){
-  $sql = "INSERT INTO news (title, text, image, id_users, link) VALUES ('$title', '$text', '$image', '$id_users', '$link')";
+  $sql = "INSERT INTO ebe58_news (title, text, image, id_users, link) VALUES ('$title', '$text', '$image', '$id_users', '$link')";
   \DB::insert($sql);
 }
 
 function updateNews($id, $title, $text, $img_name, $prio, $link){
-  $sql = "UPDATE news SET title = '$title', text = '$text', image = '$img_name', prio = '$prio', link = '$link' WHERE id = '$id'";
+  $sql = "UPDATE ebe58_news SET title = '$title', text = '$text', image = '$img_name', prio = '$prio', link = '$link' WHERE id = '$id'";
   \DB::update($sql);
 }
 
 function deleteNews($id){
-  $sql = "DELETE FROM news WHERE id = '$id'";
+  $sql = "DELETE FROM ebe58_news WHERE id = '$id'";
   \DB::delete($sql);
 }
 
 function displayNews(){
-  $sql = "SELECT * FROM news";
+  $sql = "SELECT * FROM ebe58_news";
   $result =\DB::select($sql);
 
   return $result;
 }
 
 function displayNewsHome(){
-  $sql = "SELECT * FROM news ORDER BY id DESC LIMIT 5";
+  $sql = "SELECT * FROM ebe58_news ORDER BY id DESC LIMIT 5";
   $result =\DB::select($sql);
 
   return $result;
 }
 
 function uniqueNews($id){
-  $sql = "SELECT * FROM news WHERE id = '$id'";
+  $sql = "SELECT * FROM ebe58_news WHERE id = '$id'";
   $result =\DB::select($sql)[0];
 
   return $result;
@@ -261,26 +261,26 @@ function uniqueNews($id){
 //This function allow to add a product into the database
 
 function productCreate($product_name, $product_description, $product_price, $product_height, $product_weight, $product_quantity, $product_width, $activities, $img_name){
-    $sql = "INSERT INTO produit VALUES (NULL, '$product_name', '$product_description', '$product_price', '$product_height', '$product_weight','$product_quantity','$product_width', '$activities', '$img_name')";
+    $sql = "INSERT INTO ebe58_produit VALUES (NULL, '$product_name', '$product_description', '$product_price', '$product_height', '$product_weight','$product_quantity','$product_width', '$activities', '$img_name')";
     \DB::insert($sql);
 }
 
 //This function allows to update the information on a product.
 
 function productUpdate($id, $product_name, $product_description, $product_price, $product_height, $product_weight, $product_quantity, $product_width, $activities, $img_name){
-    $sql = "UPDATE produit SET name = '$product_name', description = '$product_description', price = '$product_price', quantity = '$product_quantity', weight = '$product_weight', height = '$product_height', width = '$product_width', image = '$img_name' WHERE id = '$id'";
+    $sql = "UPDATE ebe58_produit SET name = '$product_name', description = '$product_description', price = '$product_price', quantity = '$product_quantity', weight = '$product_weight', height = '$product_height', width = '$product_width', image = '$img_name' WHERE id = '$id'";
     \DB::update($sql);
 }
 
 function productDelete($id){
-    $sql = "DELETE FROM produit WHERE id = '$id'";
+    $sql = "DELETE FROM ebe58_produit WHERE id = '$id'";
     \DB::delete($sql);
 }
 
 //This function allows to show product
 
 function showProduct($activity){
-    $sql = "SELECT DISTINCT id, name, description, price, height, weight, quantity, width, image FROM produit WHERE activity = '$activity'";
+    $sql = "SELECT DISTINCT id, name, description, price, height, weight, quantity, width, image FROM ebe58_produit WHERE activity = '$activity'";
     $result = \DB::select($sql);
 
     return $result;
@@ -289,7 +289,7 @@ function showProduct($activity){
 //This function allow to show all the products.
 
 function showAllProduct(){
-    $sql = "SELECT DISTINCT id, name, description, price, height, weight, quantity, width, image FROM produit";
+    $sql = "SELECT DISTINCT id, name, description, price, height, weight, quantity, width, image FROM ebe58_produit";
     $result = \DB::select($sql)[0];
     return $result;
 }
@@ -297,7 +297,7 @@ function showAllProduct(){
 //This function allows to show only one product according its category.
 
 function showOneProduct($id){
-    $sql = "SELECT DISTINCT id, name, description, price, height, weight, quantity, width, image FROM produit WHERE id = '$id'";
+    $sql = "SELECT DISTINCT id, name, description, price, height, weight, quantity, width, image FROM ebe58_produit WHERE id = '$id'";
     $result = \DB::select($sql);
     return $result;
 }
@@ -315,31 +315,31 @@ function sectionExist($activity){
 }
 
 function adminDisp(){
-  $sql = "SELECT id, name, rank FROM users";
+  $sql = "SELECT id, name, rank FROM ebe58_users";
   $result =\DB::select($sql);
 
   return $result;
 }
 
 function adminModify($id){
-  $sql = "SELECT * FROM users WHERE id = '$id'";
+  $sql = "SELECT * FROM ebe58_users WHERE id = '$id'";
   $result =\DB::select($sql)[0];
 
   return $result;
 }
 
 function adminUp($id, $rank){
-  $sql = "UPDATE users SET rank = '$rank' WHERE id = '$id'";
+  $sql = "UPDATE ebe58_users SET rank = '$rank' WHERE id = '$id'";
   \DB::update($sql);
 }
 
 function deleteAdmin($id){
-  $sql = "DELETE FROM users WHERE id = '$id'";
+  $sql = "DELETE FROM ebe58_users WHERE id = '$id'";
   \DB::delete($sql);
 }
 
 function profilNews($id_user){
-  $sql = "SELECT DISTINCT id, name, avatar, email FROM users WHERE id = '$id_user'";
+  $sql = "SELECT DISTINCT id, name, avatar, email FROM ebe58_users WHERE id = '$id_user'";
   $result =\DB::select($sql);
 
   if (!empty($result)) {
@@ -350,4 +350,40 @@ function profilNews($id_user){
 
     return ['id' => $id, 'name' => $name, 'avatar' => $avatar, 'email' => $mail];
   }
+}
+
+function recoverPassByMail($mail, $link) {
+	$sql = "SELECT id FROM ebe58_users WHERE email = '$mail'";
+  $result = \DB::select($sql);
+	if (empty($result))
+		return false;
+
+	$sql = "UPDATE ebe58_users SET link = '$link' WHERE email = '$mail'";
+	\DB::update($sql);
+
+	return true;
+}
+
+function testLink($link) {
+	$sql = "SELECT link FROM ebe58_users WHERE link = '$link'";
+	$result = \DB::select($sql);
+
+	return $result;  //prevent user from use the overwriting link '0'
+}
+
+function updatePsw($email, $cpassword){
+
+	$sql = "UPDATE ebe58_users SET password = '$cpassword' WHERE email = '$email'";
+	\DB::update($sql);
+}
+
+function modifyPassword($link, $password) {
+
+	// replace lost password by the new one
+	$sql = "UPDATE ebe58_users SET password = '$password' WHERE link = '$link'";
+	\DB::update($sql);
+
+	//overwrite link
+	$sql = "UPDATE ebe58_users SET link = '0' WHERE link = '$link'";
+	\DB::update($sql);
 }

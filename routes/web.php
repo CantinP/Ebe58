@@ -30,13 +30,21 @@ Route::get('/actualité', 'Controller@newsUnique');
 Route::get('/crédits', 'Controller@credits');
 Route::get('/qui-sommes-nous', 'Controller@qui');
 Route::get('/mentions', 'Controller@mentions');
+Route::get('/oubli', 'Controller@forgotPassword');
+Route::get('/oubli/{link}', 'Controller@changePassword');
 
 Route::post('/updateProfil', 'Controller@infosUpdate');
 Route::post('/changePsw', 'Controller@updatePsw');
+Route::post('/lostPsw', 'Controller@lostPsw');
+Route::post('/lostpassword', 'Controller@lostpassword');
+Route::post('/lostPsw', 'Controller@lostPsw');
 Route::post('/contact/envoi', 'Controller@sendMessage');
+Route::post('/verification-email', 'Controller@existEmail');
+Route::post('/oubli', 'Controller@forgotPassword');
+Route::post('/oubli/{link}', 'Controller@changePassword');
+Route::post('/changep', 'Controller@changeThePassword');
 
 Route::post('/ajaxChangePsw', 'Controller@ajaxUpdatePsw');
-Route::post('/verification-email', 'Controller@existEmail');
 
 Route::group(['middleware' => ['checkRank']], function () {
   Route::get('/administration', 'Controller@backoffice');

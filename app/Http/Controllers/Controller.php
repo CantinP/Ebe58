@@ -1209,6 +1209,77 @@ class Controller extends BaseController
       }
     }
 
+	public function forgotPassword(Request $request){
+			$mail = Input::get('mail');
+			$random = generate();
+			$socials = socialDisp();
 
+			$recover = recoverPassByMail($mail, $random);
+			if ($recover) {
+
+				$link = 'https://ebe58.cantin-poiseau.fr/oubli/'.$random;
+
+				$message = '<html><body>'.'Veuillez trouver ci-joint le lien de réinitialisation de mot de passe pour l\'adresse mail '.$mail
+										.'<a href="'.$link.'"> 
+												<button style="padding:6px 10px;font-size:18px;color:#EEE;background-color:#864;">
+												Changer mon mot de passe</button>
+											</a>
+										</body></html>';
+
+				$message = wordwrap($message, 70);
+				$subject = 'Mail de réinitialisation de mot de passe.';
+
+				$headers = "From: " .'contact@ebe58.fr'. "\r\n";
+				$headers .= "MIME-Version: 1.0\r\n";
+				$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+				//send mail
+				mail($mail, $subject, $message, $headers);
+
+				return view('lost-password', ['socials' => $socials]);
+		}
+		return view('lost-password', ['socials' => $socials]);
+	}
+
+	public function changePassword($link, Request $request) {
+		$link;
+		$socials = socialDisp();
+		return view('change-password', ['socials' => $socials, 'link' => $link]);
+		
+	}
+
+	public function changeThePassword(Request $request) {
+		
+    $errorMsg = [];
+		$link = Input::get('link');
+		$npassword = Input::get('password');
+		$cpassword = Input::get('confirm-password');
+		$errors = 0;
+
+		if ($npassword !== $cpassword) {
+			$errors++;
+			echo 'test';
+		}
+		if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$-.:-?{-~!"^_`\[\]\/])(?=.{8,})/',
+			$cpassword)) {
+			$errors++;
+			echo 'Votre mot de passe doit contenir au moins 8
+					caractères, dont une majuscule, une minuscule, un chiffre et un
+					symbole.';
+		}
+
+		// sanitize and hash new pass
+		$npassword = filter_var($npassword);
+		$password = password_hash($npassword, PASSWORD_BCRYPT);
+
+			if ($errors === 0) {
+				modifyPassword($link, $password);
+				return redirect()->to('/')->send();
+      }
+			else {
+				return view('error', ['errors' => $errorMsg]);
+			}
+		
+	}
   use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }
