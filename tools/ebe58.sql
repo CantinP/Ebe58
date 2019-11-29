@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : ebefrrwbcnebe58.mysql.db
--- Généré le :  ven. 29 nov. 2019 à 16:29
+-- Généré le :  sam. 30 nov. 2019 à 00:27
 -- Version du serveur :  5.6.43-log
 -- Version de PHP :  7.3.12
 
@@ -213,11 +213,11 @@ CREATE TABLE `ebe58_services` (
 --
 
 INSERT INTO `ebe58_services` (`id`, `name`, `link`, `banner`, `color`, `text`, `text2`, `text3`, `text4`, `video`, `pdf`, `button`, `logo`) VALUES
-(42, 'Bois et Affouages', '#', 'pt49wz90ggzkkhje.jpg', '#b56c24', 'Horaires :', 'Description :\r\n\r\nPour le moment, tout le contenu de cette page est temporaire.', NULL, NULL, 'NULL', 'l64epzjfudoefne3.pdf', 'pe5odaljtboe7kux.jpg', 'aa1dqv0ikpw8s3c5.jpg'),
-(44, 'Maraîchage', '#', '24f5fdi2rjo2sp9g.jpg', '#327e40', 'Horaires :', 'Description : Pour le moment, tout le contenu de cette page est temporaire.', NULL, NULL, 'NULL', '4cseumdksnns5yte.pdf', '9i9sgonn4oq9ogcq.jpg', '3ii5dcm3g0z5mv3n.jpg'),
-(45, 'Recyclerie', '#', 'k1ikd5951lb8igr3.jpg', '#000000', 'Horaires :', 'Description : Pour le moment, tout le contenu de cette page est temporaire.', NULL, NULL, 'NULL', 'kz0ktiz71ss1u3v3.pdf', '5zitabaiiu5bz0qp.jpg', 'uazjq90uo10utbvm.jpg'),
-(46, 'Motoculture', '#', 'n6fh3bezqueet0bq.jpg', '#2e2e49', 'Horaires :', 'Description : Pour le moment, tout le contenu de cette page est temporaire.', NULL, NULL, 'NULL', 'dvbsji90cuxo9iz0.pdf', 'qdkupambsisi6aaj.jpg', '392017sg31jc08hd.jpg'),
-(47, 'Bois et Nature', 'NULL', 'h3gtbt752ux14p8b.jpg', '#845424', 'Horaires :', 'Description : Pour le moment, tout le contenu de cette page est temporaire.', NULL, NULL, 'NULL', 'b5gf4t22qy2oo2pe.pdf', 'ttn694wqjovoall4.jpg', '3wh7bz56qaczebna.jpg');
+(42, 'Bois et Affouages', '#', 'pt49wz90ggzkkhje.jpg', '#b56c24', 'Adresse : 3 cour du château 58700 Prémery', 'Numéro : 03 86 38 26 64', 'Horaires : Du Lundi au Vendredi de 9h à 12h - 13h à 17h00', 'Description :\r\n\r\nPour le moment, tout le contenu de cette page est temporaire.', 'NULL', 'l64epzjfudoefne3.pdf', 'pe5odaljtboe7kux.jpg', 'aa1dqv0ikpw8s3c5.jpg'),
+(44, 'Maraîchage', '#', '24f5fdi2rjo2sp9g.jpg', '#327e40', '3 cour du château 58700 Prémery', 'Numéro : 03 86 38 26 64', 'Horaires : Du Lundi au Vendredi de 9h à 12h - 13h à 17h00', 'Description : Pour le moment, tout le contenu de cette page est temporaire.', 'NULL', '4cseumdksnns5yte.pdf', '9i9sgonn4oq9ogcq.jpg', '3ii5dcm3g0z5mv3n.jpg'),
+(45, 'Recyclerie', '#', 'k1ikd5951lb8igr3.jpg', '#000000', 'Adresse : 9 rue Auguste Lambiotte 58700 Prémery', 'Numéro : 03 86 60 51 71', 'Horaires : Du Lundi au Vendredi de 8h30 à 12h - 13h à 17h30 et le samedi de 9h à 17h', 'Description : Pour le moment, tout le contenu de cette page est temporaire.', 'NULL', 'kz0ktiz71ss1u3v3.pdf', '5zitabaiiu5bz0qp.jpg', 'uazjq90uo10utbvm.jpg'),
+(46, 'Motoculture', '#', 'n6fh3bezqueet0bq.jpg', '#2e2e49', 'Adresse : 9 rue Auguste Lambiotte 58700 Prémery', 'Numéro : 03 86 60 51 70', 'Horaires : Du Lundi au Vendredi de 8h à 12h - 13h30 à 17h30 et le samedi de 9h à 12h', 'Description : Pour le moment, tout le contenu de cette page est temporaire.', 'NULL', 'dvbsji90cuxo9iz0.pdf', 'qdkupambsisi6aaj.jpg', '392017sg31jc08hd.jpg'),
+(47, 'Bois et Nature', 'NULL', 'h3gtbt752ux14p8b.jpg', '#845424', 'Adresse : 3 cour du château 58700 Prémery', 'Numéro : 03 86 38 26 64', 'Horaires : Du Lundi au Vendredi de 9h à 12h - 13h à 17h00', 'Description : Pour le moment, tout le contenu de cette page est temporaire.', 'NULL', 'b5gf4t22qy2oo2pe.pdf', 'ttn694wqjovoall4.jpg', '3wh7bz56qaczebna.jpg');
 
 -- --------------------------------------------------------
 

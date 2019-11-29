@@ -13,7 +13,7 @@ class CreateUsers extends Migration
      */
     public function up()
     {
-        Schema::create('prtf_users', function (Blueprint $table) {
+        Schema::create('ebe58_users', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prtf_users');
+        Schema::dropIfExists('ebe58_users');
     }
 }
