@@ -8,5 +8,7 @@ EBE58 - Qui Sommes Nous ?
 <section>
   <h1>Présentation de l'entreprise EBE58, et de son organisation.</h1>
 </section>
-<p>{{$texts[0]}}</p>
+@foreach($textsQui as $textQui)
+<p>{{$textQui -> text}}</p>
+@endforeach
 @endsection

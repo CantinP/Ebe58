@@ -6,7 +6,14 @@ EBE58 - Crédits
 
 @section('content')
 <section>
-  <h1>Sur cette page vous retrouverez les différents acteurs ayant participés à la création de ce site internet.</h1>
+  <h1>Crédits.</h1>
 </section>
+<h2>Design PC</h2>
 <p>{{$texts[0]}}</p>
+<h2>Design Mobile</h2>
+<p>{{$texts[1]}}</p>
+<h2>Développement et Intégration</h2>
+<p>{{$texts[2]}}</p>
+<h2>Gestion Site</h2>
+<p>{{$texts[3]}}</p>
 @endsection

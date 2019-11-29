@@ -21,6 +21,8 @@ EBE58 - Activités
   <div class="activities-btn"><img src="/button/{{$results -> button}}" alt="bouton activité"></div>
   <p>{{$results -> text}}</p>
   <p>{{$results -> text2}}</p>
+  <p>{{$results -> text3}}</p>
+  <p>{{$results -> text4}}</p>
   <p>Couleur {{$results -> color}}</p>
   @if($results -> video !== NULL && $results -> video !== "" && $results -> video !== "NULL")
   <div class="video-container">

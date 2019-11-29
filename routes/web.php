@@ -54,7 +54,6 @@ Route::group(['middleware' => ['checkRank']], function () {
   Route::get('/activités-création', 'Controller@activityCreation');
   Route::get('/activités/modify', 'Controller@activityModify');
   Route::get('/partenaires/modify', 'Controller@partnerModify');
-  Route::get('/modificationTextes', 'Controller@modifyText');
   Route::get('/updateproduct', 'Controller@updateProduct');
   Route::get('/addproduct', 'Controller@addproduct')->name('addproduct');
   Route::get('/productlist/product/modify', 'Controller@updateProduct');
@@ -64,6 +63,7 @@ Route::group(['middleware' => ['checkRank']], function () {
   Route::get('/news-create', 'Controller@newsAdd');
   Route::get('/admin', 'Controller@admin');
   Route::get('/modifyAdmin', 'Controller@modifyAdmin');
+  Route::get('/modificationTextes', 'Controller@modifyText');
 
   Route::post('/adminDelete', 'Controller@adminDelete');
   Route::post('/adminModify', 'Controller@adminUpdate');
@@ -82,4 +82,6 @@ Route::group(['middleware' => ['checkRank']], function () {
   Route::post('/updateNews', 'Controller@newsUpdate');
   Route::post('/addNews', 'Controller@newsCreate');
   Route::post('/newsDelete', 'Controller@newsDelete');
+  Route::post('/deleteTextes', 'Controller@deleteText');
+  Route::post('/createTextes', 'Controller@textCreate');
 });

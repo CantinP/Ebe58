@@ -35,11 +35,17 @@ EBE58 - Modification Secteur
   <label for="color">Code Couleur</label>
   <input id="color" class="margin" type="color" value="{{$result -> color}}" name="color">
 
-  <label for="text">Premier bloc</label>
+  <label for="text">Adresse</label>
   <textarea name="text" id="text">{{$result -> text}}</textarea>
 
-  <label for="text2">Second bloc</label>
+  <label for="text2">Numéro</label>
   <textarea name="text2" id="text2">{{$result -> text2}}</textarea>
+
+  <label for="text3">Horaires</label>
+  <textarea name="text3" id="text3">{{$result -> text3}}</textarea>
+
+  <label for="text4">Description</label>
+  <textarea name="text4" id="text4">{{$result -> text4}}</textarea>
 
   <label for="video">Lien Vidéo</label>
   <input name="video" class="inpText" id="video" type="text" value="{{$result -> video}}">

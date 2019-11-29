@@ -24,7 +24,7 @@ EBE58 - Secteur d'Activités
   <div class="col-lg top column">
     <img class="banner-activ" src="/logo/{{$result -> logo}}" alt="logo activité">
     <row>
-      <p>{{$result -> text}}</p>
+      <p>{{$result -> text4}}</p>
       <img class="activities-img" src="/banner/{{$result -> banner}}" alt="bannière activité">
     </row>
     @if($result -> video !== NULL && $result -> video !== "" && $result -> video !== "NULL")
@@ -32,11 +32,15 @@ EBE58 - Secteur d'Activités
       <iframe id="mode-cinema" src="{{str_replace('watch?v=', 'embed/', $result -> video)}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" alt="video activité" allowfullscreen height="378" width="620"></iframe>
     </div>
     @endif
+    <p>{{$result -> text}}</p>
     <p>{{$result -> text2}}</p>
-    <a class="margin" href="{{$result -> link}}"><button class="inpBtn">Visiter la Boutique</button></a>
-    <a class="download margin" href="/pdf/{{$result -> pdf}}">
-      <img class='logo' src="/img/download.png">
-    </a>
+    <p>{{$result -> text3}}</p>
+    <?php
+//    <a class="margin" href="{{$result -> link}}"><button class="inpBtn">Visiter la Boutique</button></a>
+//    <a class="download margin" href="/pdf/{{$result -> pdf}}">
+//      <img class='logo' src="/img/download.png">
+//    </a>
+    ?>
   </div>
 </section>
 

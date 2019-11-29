@@ -27,11 +27,17 @@ EBE58 - Activités
   <label for="banner">Code Couleur</label>
   <input type="color" id="color" class="margin" value="#000000" name="textcolor">
 
-  <label for="text">Premier bloc</label>
+  <label for="text">Adresse</label>
   <textarea name="text" id="text"></textarea>
 
-  <label for="text2">Second bloc</label>
+  <label for="text2">Numéro</label>
   <textarea name="text2" id="text2"></textarea>
+
+  <label for="text3">Horaires</label>
+  <textarea name="text3" id="text3"></textarea>
+
+  <label for="text4">Description</label>
+  <textarea name="text4" id="text4"></textarea>
 
   <label for="video">Video activité (laisser # si aucun)</label>
   <input name="video" id="video" class="inpText" type="text" value="#">

@@ -11,20 +11,6 @@ EBE58 - Accueil
     <h3 class="sidebar-title">Quoi de neuf ?</h3>
     @if(!empty($newsHome))
     @foreach($newsHome as $resulting)
-    @if($resulting -> prio === '1')
-    <article>
-      <a href="/actualité?id={{$resulting -> id}}">
-        <h4 class="sidebar-title">{{$resulting -> title}}</h4>
-      </a>
-      <p id="container{{($resulting -> id)}}">{{($resulting -> text)}}</p>
-      <a href="{{$resulting -> link}}">
-        Pour en voir plus.
-      </a>
-      @if($resulting -> image != NULL)
-      <img class="margin banner-news" src="/news/{{$resulting -> image}}">
-      @endif
-    </article>
-    @else
     <article>
       <h4 class="sidebar-title">{{$resulting -> title}}</h4>
       <p id="container{{($resulting -> id)}}">{{($resulting -> text)}}</p>
@@ -35,16 +21,20 @@ EBE58 - Accueil
       <img class="margin banner-news" src="/news/{{$resulting -> image}}">
       @endif
     </article>
-    @endif
     @endforeach
+    @else
+    <h4>Pas d'actualité pour le moment !</h4>
     @endif
   </sidebar>
   <div class="col-lg top column">
     <article class="margin desktop">
       <h3>{{$texts[2]}}</h3>
       <div class="edito">
-        <p>{{$texts[0]}}</p>
-        <p>{{$texts[1]}}</p>
+        @foreach($textsHome as $textHome)
+        @if($textHome -> id != '1')
+        <p>{{$textHome -> text}}</p>
+        @endif
+        @endforeach
       </div>
     </article>
     <h5>Secteurs d'activités</h5>

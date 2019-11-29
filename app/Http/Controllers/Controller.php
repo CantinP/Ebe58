@@ -22,6 +22,7 @@ use App\User;
 require('Model.php');
 require('functions.php');
 
+
 class Controller extends BaseController
 {
   //Login page
@@ -54,7 +55,8 @@ class Controller extends BaseController
     $sectionDisp = activity();
 
     $texts = getTexts('home');
-    return view('home', ['texts' => $texts, 'socials' => $socials, 'newsHome' => $newsHome, 'sectionDisp' => $sectionDisp]);
+    $textsHome = displayTexts('home');
+    return view('home', ['texts' => $texts, 'textsHome' => $textsHome, 'socials' => $socials, 'newsHome' => $newsHome, 'sectionDisp' => $sectionDisp]);
   }
 
   //partner page
@@ -72,7 +74,7 @@ class Controller extends BaseController
 
     return view('partner', ['name' => $name, 'link' => $link, 'logo' => $logo, 'description' => $description, 'id' => $id, 'result' => $result, 'socials' => $socials]);
   }
-
+//View one section page
   public function section(Request $request){
 		$socials = socialDisp();
     $sectionDisp = activity();
@@ -82,7 +84,7 @@ class Controller extends BaseController
 
     return view('section', ['result' => $result, 'socials' => $socials, 'sectionDisp' => $sectionDisp]);
   }
-
+//View all partner
   public function partner(Request $request){
 		$socials = socialDisp();
     $result = viewPartner();
@@ -95,11 +97,9 @@ class Controller extends BaseController
     $id = $results -> id;
     }
 
-    echo var_dump($results -> name);
-
     return view('partners', ['name' => $name, 'link' => $link, 'logo' => $logo, 'description' => $description, 'id' => $id, 'result' => $result, 'socials' => $socials]);
   }
-
+//Modify partner page
   public function partnerModify(Request $request){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 		$socials = socialDisp();
@@ -110,7 +110,7 @@ class Controller extends BaseController
       }
       abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//View backoffice page
   public function backoffice(Request $request){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 		$socials = socialDisp();
@@ -118,7 +118,7 @@ class Controller extends BaseController
     }
     abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//delete one partner
   public function deletePartner(Request $request){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
     $id = Input::get('id');
@@ -129,7 +129,7 @@ class Controller extends BaseController
       }
       abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//Display texts on page text
   public function dispTexts(Request $request){
 		$socials = socialDisp();
     $textsHome = displayTexts('home');
@@ -137,7 +137,7 @@ class Controller extends BaseController
     $textsQui = displayTexts('qui');
     return view('texts', ['textsHome' => $textsHome, 'textsCredits' => $textsCredits, 'textsQui' => $textsQui, 'socials' => $socials]);
   }
-
+//modification of actual Partners
   public function modifyPartner(Request $request){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 
@@ -174,7 +174,7 @@ class Controller extends BaseController
     }
     abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//Create a partner
   public function partnerCreate(Request $request){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 
@@ -210,18 +210,18 @@ class Controller extends BaseController
     }
     abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//Modify precise Text
   public function modifyText(Request $request){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 
       $text = Input::get('text');
-      $title = Input::get('title');
+      $id = Input::get('id');
 
       $text = filter_var($text, FILTER_SANITIZE_MAGIC_QUOTES);
-      $title = filter_var($title, FILTER_SANITIZE_MAGIC_QUOTES);
+      $id = filter_var($id, FILTER_SANITIZE_MAGIC_QUOTES);
 
-      if(!empty($text) || !empty($title)){
-        updateText($text, $title);
+      if(!empty($text) || !empty($id)){
+        updateText($text, $id);
         return redirect()->to('/texts')->send();
       }
       else{
@@ -231,14 +231,14 @@ class Controller extends BaseController
     }
     abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//Display all Activity Section
   public function activityDisplay(Request $request){
 		$socials = socialDisp();
     $sectionDisp = activity();
 
     return view('activity', ['socials' => $socials, 'sectionDisp' => $sectionDisp]);
   }
-
+//Create Activity Section page
   public function activityCreation(Request $request){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 		$socials = socialDisp();
@@ -247,7 +247,7 @@ class Controller extends BaseController
       }
       abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//Modify Activity Section page
   public function activityModify(Request $request){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 		$socials = socialDisp();
@@ -259,7 +259,7 @@ class Controller extends BaseController
       }
       abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//Create Activity Section
   public function createSection(Request $request){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
     $name = Input::get('name');
@@ -270,6 +270,8 @@ class Controller extends BaseController
     $color = Input::get('textcolor');
     $text = Input::get('text');
     $text2 = Input::get('text2');
+    $text3 = Input::get('text3');
+    $text4 = Input::get('text4');
     $video = Input::get('video');
     $pdf = $request->file('pdf');
 
@@ -283,6 +285,8 @@ class Controller extends BaseController
     $btn = filter_var($btn, FILTER_SANITIZE_MAGIC_QUOTES);
     $text = filter_var($text, FILTER_SANITIZE_MAGIC_QUOTES);
     $text2 = filter_var($text2, FILTER_SANITIZE_MAGIC_QUOTES);
+    $text3 = filter_var($text3, FILTER_SANITIZE_MAGIC_QUOTES);
+    $text4 = filter_var($text4, FILTER_SANITIZE_MAGIC_QUOTES);
     $video = filter_var($video, FILTER_SANITIZE_MAGIC_QUOTES);
     $pdf = filter_var($pdf, FILTER_SANITIZE_MAGIC_QUOTES);
 
@@ -343,8 +347,8 @@ class Controller extends BaseController
       $pdf_name = '#';
     }
 
-    if($name != '' && $link != '' && $text != '' && $text2 != '' && $color != ''){
-      addActivity($name, $link, $img_name, $text, $text2, $video, $color, $pdf_name, $logo_name, $btn_name);
+    if($name != '' && $link != '' && $text != '' && $text2 != '' && $text3 != '' && $text4 != '' && $color != ''){
+      addActivity($name, $link, $img_name, $text, $text2, $text3, $text4, $video, $color, $pdf_name, $logo_name, $btn_name);
       return redirect()->to('/activités')->send();
     }
     else{
@@ -355,7 +359,7 @@ class Controller extends BaseController
       }
       abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//Modify Activity Section
   public function sendActivityModify(Request $request){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
     $id = Input::get('id');
@@ -366,6 +370,8 @@ class Controller extends BaseController
     $btn = $request->file('buttonActivity');
     $text = Input::get('text');
     $text2 = Input::get('text2');
+    $text3 = Input::get('text3');
+    $text4 = Input::get('text4');
     $video = Input::get('video');
     $color = Input::get('color');
     $pdf = $request->file('pdf');
@@ -380,6 +386,8 @@ class Controller extends BaseController
     $btn = filter_var($btn, FILTER_SANITIZE_MAGIC_QUOTES);
     $text = filter_var($text, FILTER_SANITIZE_MAGIC_QUOTES);
     $text2 = filter_var($text2, FILTER_SANITIZE_MAGIC_QUOTES);
+    $text3 = filter_var($text3, FILTER_SANITIZE_MAGIC_QUOTES);
+    $text4 = filter_var($text4, FILTER_SANITIZE_MAGIC_QUOTES);
     $video = filter_var($video, FILTER_SANITIZE_MAGIC_QUOTES);
     $pdf = filter_var($pdf, FILTER_SANITIZE_MAGIC_QUOTES);
 
@@ -449,8 +457,8 @@ class Controller extends BaseController
       $pdf_name = Input::get('pdfancient');
     }
 
-    if($name != '' && $link != '' && $text != '' && $text2 != '' && $color != ''){
-      activityUpdate($name, $link, $img_name, $text, $text2, $video, $color, $id, $pdf_name, $logo_name, $btn_name);
+    if($name != '' && $link != '' && $text != '' && $text2 != '' && $text3 != '' && $text4 != '' && $color != ''){
+      activityUpdate($name, $link, $img_name, $text, $text2, $text3, $text4, $video, $color, $id, $pdf_name, $logo_name, $btn_name);
       return redirect()->to('/activités')->send();
     }
     else{
@@ -461,7 +469,7 @@ class Controller extends BaseController
       }
       abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//Delete Activity Section page
   public function deleteActivity(){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
     $id = Input::get('id');
@@ -472,12 +480,12 @@ class Controller extends BaseController
       }
       abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//Display Contact page
 	public function contact(){
 		$socials = socialDisp();
 		return view('contact',['socials' => $socials]);
 	}
-
+//mail send message
   public function sendMessage(){
 		if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 			$name = Input::get('name');
@@ -567,7 +575,7 @@ class Controller extends BaseController
 			}
 		}
 	}
-
+//Profil informations
   public function areaProfil(Request $request) {
 
 		if (Auth::user() && Auth::user()->rank === 0) {
@@ -658,7 +666,7 @@ class Controller extends BaseController
 			return view('area-profil', ['title' => $title, 'texts' => $texts, 'name' => $name, 'email' => $email, 'socials' => $socials]);
     }
 	}
-
+//Update password
   public function updatePsw(Request $request){
 		$password = Input::get('password');
 		$npassword = Input::get('new-password');
@@ -680,12 +688,11 @@ class Controller extends BaseController
 				$errors++;
 				array_push($errorMsg, 'Vos mots de passe ne sont pas identiques.');
 			}
-			if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$-.:-?{-~!"^_`\[\]\/])(?=.{8,})/',
+			if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/',
 				$cpassword)) {
 				$errors++;
 				array_push($errorMsg, 'Votre mot de passe doit contenir au moins 8
-					caractères, dont une majuscule, une minuscule, un chiffre et un
-					symbole.');
+					caractères, dont une majuscule, une minuscule, et un chiffre.');
 			}
 
 			$password = filter_var($password);
@@ -705,11 +712,11 @@ class Controller extends BaseController
 			return view('error', ['errors' => $errorMsg]);
 		}
 		else{
-			updatePsw($email, $cpassword);
+			modifyPsw($email, $cpassword);
 				return redirect()->to('/profil')->send();
 		}
 	}
-
+//Update profil
   public function infosUpdate(Request $request) {
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -778,7 +785,7 @@ class Controller extends BaseController
 			}
 		}
 	}
-
+//Display social network
   public function social(){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 			$socials = socialDisp();
@@ -786,7 +793,7 @@ class Controller extends BaseController
     }
         abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//Add Social network
   public function addSocial(Request $request){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 			$name = Input::get('name');
@@ -806,7 +813,7 @@ class Controller extends BaseController
   	}
 			abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
 	}
-
+//Modify Social network
   public function modifySocial(){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 
@@ -819,7 +826,7 @@ class Controller extends BaseController
     }
         abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
   }
-
+//update social network
 	public function socialUpdate(){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 
@@ -844,7 +851,7 @@ class Controller extends BaseController
       }
       abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
 	}
-
+//Delete social network
   public function socialDelete(){
     if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 			$id = Input::get('id');
@@ -853,12 +860,12 @@ class Controller extends BaseController
   	}
 		abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
 	}
-
+//Display all News
 	public function newsDisplay(){
 		$result = displayNews();
 		$socials = socialDisp();
 		$newsHome = displayNewsHome();
-
+    if(!empty($result)){
     foreach($result as $resulting){
     $title = $resulting -> title;
     $text = substr($resulting -> text, 0 , 100) . '...';
@@ -867,14 +874,18 @@ class Controller extends BaseController
     }
 
 		return view('news', ['title' => $title, 'text' => $text, 'image' => $image, 'id' => $id, 'socials' => $socials, 'newsHome' => $newsHome]);
+    }
+    else{
+		  return view('news', ['socials' => $socials, 'newsHome' => $newsHome]);
+    }
 	}
-
+//Display mentions page
 	public function mentions(){
 		$socials = socialDisp();
 
 		return view('mentions', ['socials' => $socials]);
 	}
-
+//Display credits page
 	public function credits(){
 		$socials = socialDisp();
 
@@ -882,15 +893,15 @@ class Controller extends BaseController
 
 		return view('credits', ['socials' => $socials, 'texts' => $texts]);
 	}
-
+//Display qui page
 	public function qui(){
 		$socials = socialDisp();
 
-    $texts = getTexts('qui');
+    $textsQui = displayTexts('qui');
 
-		return view('qui', ['socials' => $socials, 'texts' => $texts]);
+		return view('qui', ['socials' => $socials, 'textsQui' => $textsQui]);
 	}
-
+//show one news
 	public function newsUnique(){
 		$id = Input::get('id');
 		$all = uniqueNews($id);
@@ -898,7 +909,7 @@ class Controller extends BaseController
 
 		return view('news-unique', ['all' => $all, 'socials' => $socials]);
 	}
-
+//Modify one news
 	public function newsModify(Request $request){
 		if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 			$socials = socialDisp();
@@ -911,7 +922,7 @@ class Controller extends BaseController
 		}
 		abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
 	}
-
+//Add one news
 	public function newsAdd(Request $request){
 		if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 			$socials = socialDisp();
@@ -920,7 +931,7 @@ class Controller extends BaseController
 		}
 		abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
 	}
-
+//Delete one news
 	public function newsDelete(){
 		if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
 			$id = Input::get('id');
@@ -929,14 +940,14 @@ class Controller extends BaseController
 		}
 		abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
 	}
-
+//update one news
 	public function newsUpdate(Request $request){
-		if (Auth::user() && Auth::user()->rank === 1){
+		if (Auth::user() && Auth::user()->rank > 0){
 			$id_users = $request->session()->get('id');
 			$id = Input::get('id');
 			$all = uniqueNews($id);
 			$id_check = $all -> id_users;
-			if($id_users == $id_check || Auth::user() && Auth::user()->rank === 2){
+			if($id_users == $id_check || Auth::user() && Auth::user()->rank > 0){
 				$id = Input::get('id');
 				$title = Input::get('name');
 				$text = Input::get('text');
@@ -1210,33 +1221,33 @@ class Controller extends BaseController
     }
 
 	public function forgotPassword(Request $request){
-			$mail = Input::get('mail');
-			$random = generate();
-			$socials = socialDisp();
+    $mail = Input::get('mail');
+    $random = generate();
+    $socials = socialDisp();
 
-			$recover = recoverPassByMail($mail, $random);
-			if ($recover) {
+    $recover = recoverPassByMail($mail, $random);
+    if ($recover) {
 
-				$link = 'https://ebe58.cantin-poiseau.fr/oubli/'.$random;
+      $link = 'https://preprod.ebe58.fr/oubli/'.$random;
 
-				$message = '<html><body>'.'Veuillez trouver ci-joint le lien de réinitialisation de mot de passe pour l\'adresse mail '.$mail
-										.'<a href="'.$link.'"> 
-												<button style="padding:6px 10px;font-size:18px;color:#EEE;background-color:#864;">
-												Changer mon mot de passe</button>
-											</a>
-										</body></html>';
+      $message = '<html><body>'.'Veuillez trouver ci-joint le lien de réinitialisation de mot de passe pour l\'adresse mail '.$mail.'<br>'
+                  .'<a href="'.$link.'">
+                      <button style="padding:6px 10px;font-size:18px;color:#EEE;background-color:#864;">
+                      Changer mon mot de passe</button>
+                    </a>
+                  </body></html>';
 
-				$message = wordwrap($message, 70);
-				$subject = 'Mail de réinitialisation de mot de passe.';
+      $message = wordwrap($message, 70);
+      $subject = 'Mail de réinitialisation de mot de passe.';
 
-				$headers = "From: " .'contact@ebe58.fr'. "\r\n";
-				$headers .= "MIME-Version: 1.0\r\n";
-				$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+      $headers = "From: " .'contact@ebe58.fr'. "\r\n";
+      $headers .= "MIME-Version: 1.0\r\n";
+      $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-				//send mail
-				mail($mail, $subject, $message, $headers);
+      //send mail
+      mail($mail, $subject, $message, $headers);
 
-				return view('lost-password', ['socials' => $socials]);
+        return redirect()->to('/')->send();
 		}
 		return view('lost-password', ['socials' => $socials]);
 	}
@@ -1245,11 +1256,11 @@ class Controller extends BaseController
 		$link;
 		$socials = socialDisp();
 		return view('change-password', ['socials' => $socials, 'link' => $link]);
-		
+
 	}
 
 	public function changeThePassword(Request $request) {
-		
+
     $errorMsg = [];
 		$link = Input::get('link');
 		$npassword = Input::get('password');
@@ -1258,14 +1269,13 @@ class Controller extends BaseController
 
 		if ($npassword !== $cpassword) {
 			$errors++;
-			echo 'test';
+			array_push($errorMsg, 'Les mots de passent doivent être identiques.');
 		}
-		if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$-.:-?{-~!"^_`\[\]\/])(?=.{8,})/',
+		if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/',
 			$cpassword)) {
 			$errors++;
-			echo 'Votre mot de passe doit contenir au moins 8
-					caractères, dont une majuscule, une minuscule, un chiffre et un
-					symbole.';
+			array_push($errorMsg, 'Votre mot de passe doit contenir au moins 8
+					caractères, dont une majuscule, une minuscule, et un chiffre.');
 		}
 
 		// sanitize and hash new pass
@@ -1279,7 +1289,38 @@ class Controller extends BaseController
 			else {
 				return view('error', ['errors' => $errorMsg]);
 			}
-		
+
 	}
+
+  public function deleteText(Request $request){
+    if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
+    $id = Input::get('id');
+
+    textDelete($id);
+
+    return redirect()->to('/texts')->send();
+      }
+      abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
+  }
+
+    public function textCreate(Request $request){
+      if (Auth::user() && Auth::user()->rank === 2){
+        $page = Input::get('page');
+        $text = Input::get('text');
+
+        $page = filter_var($page, FILTER_SANITIZE_STRING);
+        $text = filter_var($text, FILTER_SANITIZE_STRING);
+
+      if(!empty($page) && !empty($text)){
+        addText($page, $text);
+			 return redirect()->to('/texts')->send();
+      }
+      else{
+		    return redirect()->to('/texts')->send();
+      }
+
+      }
+        abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
+    }
   use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

@@ -21,7 +21,7 @@ EBE58 - Contact
   <select name="receiver" class="inpText" id="receiver" required>
     <option value="none">Sélectionnez un destinataire</option>
     <option value="sav">Question production</option>
-    <option value="support">Support Technique</option>
+    <option value="support">Support Technique (Site)</option>
   </select>
   <span class="error" id="error-receiver"></span>
 

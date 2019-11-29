@@ -13,7 +13,7 @@ EBE58 - Admin
   @endif
   @if($result -> rank == 1)
   <p>Équipe</p>
-  <a class="margin" href="/modifyAdmin?id={{$result -> id}}"><button>{{__('Modifier')}}</button></a>
+  <a class="margin" href="/modifyAdmin?id={{$result -> id}}"><button class="inpBtn">{{__('Modifier')}}</button></a>
   @endif
   @if($result -> rank == 0)
   <p>Client</p>
