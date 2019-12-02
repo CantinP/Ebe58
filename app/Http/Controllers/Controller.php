@@ -547,12 +547,12 @@ class Controller extends BaseController
 			$message = wordwrap($message, 70);
 			$subject = 'Accusé de réception de votre mail à l\'EBE58';
 
-			$headers = "From: " . $receiver.'@ebe58.fr'. "\r\n";
+			$headers = "From: " . $receiver.'@xxx.xx'. "\r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
 			//parts for user mail
-			$rmail= $receiver."@ebe58.fr";
+			$rmail= $receiver."@xxx.xx";
 
 			$rmessage = '<html><body>
 										<p>'.$msg.'</p>
@@ -1228,7 +1228,7 @@ class Controller extends BaseController
     $recover = recoverPassByMail($mail, $random);
     if ($recover) {
 
-      $link = 'https://preprod.ebe58.fr/oubli/'.$random;
+      $link = 'https://www.xxx.fr/oubli/'.$random;
 
       $message = '<html><body>'.'Veuillez trouver ci-joint le lien de réinitialisation de mot de passe pour l\'adresse mail '.$mail.'<br>'
                   .'<a href="'.$link.'">
@@ -1240,7 +1240,7 @@ class Controller extends BaseController
       $message = wordwrap($message, 70);
       $subject = 'Mail de réinitialisation de mot de passe.';
 
-      $headers = "From: " .'contact@ebe58.fr'. "\r\n";
+      $headers = "From: " .'xxx@xxx.xx'. "\r\n";
       $headers .= "MIME-Version: 1.0\r\n";
       $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
