@@ -7,9 +7,9 @@
 
 		# Added to Force HTTPS
     RewriteCond %{HTTPS} off
-		RewriteCond %{HTTP_HOST} !^www\.ebe58\.fr [NC]
+		RewriteCond %{HTTP_HOST} !^www\.cantin-poiseau\.fr [NC]
 		RewriteCond %{SERVER_PORT} 80
-		RewriteRule ^(.*)$ https://preprod.ebe58.fr/$1 [L,R=301]
+		RewriteRule ^(.*)$ https://ebe58.cantin-poiseau.fr/$1 [L,R=301]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
