@@ -83,18 +83,18 @@ function activityDisplay($id){
 }
 
 function activityId(){
-  $sql = "SELECT DISTINCT id, product FROM ebe58_services";
+  $sql = "SELECT DISTINCT id FROM ebe58_services";
   $result =\DB::select($sql);
   if(!empty($result)){
   foreach($result as $resulting){
     $id = $resulting -> id;
     $product = $resulting -> product;
   }
-  return ['product' => $product, 'id' => $id];
+  return ['id' => $id];
   }else{
     $id = "";
     $product = "0";
-  return ['product' => $product, 'id' => $id];
+  return ['id' => $id];
   }
 }
 
@@ -256,51 +256,51 @@ function uniqueNews($id){
 }
 
 
-//part of anaïs
-
-//This function allow to add a product into the database
-
-function productCreate($product_name, $product_description, $product_price, $product_height, $product_weight, $product_quantity, $product_width, $activities, $img_name){
-    $sql = "INSERT INTO ebe58_produit VALUES (NULL, '$product_name', '$product_description', '$product_price', '$product_height', '$product_weight','$product_quantity','$product_width', '$activities', '$img_name')";
-    \DB::insert($sql);
-}
-
-//This function allows to update the information on a product.
-
-function productUpdate($id, $product_name, $product_description, $product_price, $product_height, $product_weight, $product_quantity, $product_width, $activities, $img_name){
-    $sql = "UPDATE ebe58_produit SET name = '$product_name', description = '$product_description', price = '$product_price', quantity = '$product_quantity', weight = '$product_weight', height = '$product_height', width = '$product_width', image = '$img_name' WHERE id = '$id'";
-    \DB::update($sql);
-}
-
-function productDelete($id){
-    $sql = "DELETE FROM ebe58_produit WHERE id = '$id'";
-    \DB::delete($sql);
-}
-
-//This function allows to show product
-
-function showProduct($activity){
-    $sql = "SELECT DISTINCT id, name, description, price, height, weight, quantity, width, image FROM ebe58_produit WHERE activity = '$activity'";
-    $result = \DB::select($sql);
-
-    return $result;
-}
-
-//This function allow to show all the products.
-
-function showAllProduct(){
-    $sql = "SELECT DISTINCT id, name, description, price, height, weight, quantity, width, image FROM ebe58_produit";
-    $result = \DB::select($sql)[0];
-    return $result;
-}
-
-//This function allows to show only one product according its category.
-
-function showOneProduct($id){
-    $sql = "SELECT DISTINCT id, name, description, price, height, weight, quantity, width, image FROM ebe58_produit WHERE id = '$id'";
-    $result = \DB::select($sql);
-    return $result;
-}
+////part of anaïs
+//
+////This function allow to add a product into the database
+//
+//function productCreate($product_name, $product_description, $product_price, $product_height, $product_weight, $product_quantity, $product_width, $activities, $img_name){
+//    $sql = "INSERT INTO ebe58_produit VALUES (NULL, '$product_name', '$product_description', '$product_price', '$product_height', '$product_weight','$product_quantity','$product_width', '$activities', '$img_name')";
+//    \DB::insert($sql);
+//}
+//
+////This function allows to update the information on a product.
+//
+//function productUpdate($id, $product_name, $product_description, $product_price, $product_height, $product_weight, $product_quantity, $product_width, $activities, $img_name){
+//    $sql = "UPDATE ebe58_produit SET name = '$product_name', description = '$product_description', price = '$product_price', quantity = '$product_quantity', weight = '$product_weight', height = '$product_height', width = '$product_width', image = '$img_name' WHERE id = '$id'";
+//    \DB::update($sql);
+//}
+//
+//function productDelete($id){
+//    $sql = "DELETE FROM ebe58_produit WHERE id = '$id'";
+//    \DB::delete($sql);
+//}
+//
+////This function allows to show product
+//
+//function showProduct($activity){
+//    $sql = "SELECT DISTINCT id, name, description, price, height, weight, quantity, width, image FROM ebe58_produit WHERE activity = '$activity'";
+//    $result = \DB::select($sql);
+//
+//    return $result;
+//}
+//
+////This function allow to show all the products.
+//
+//function showAllProduct(){
+//    $sql = "SELECT DISTINCT id, name, description, price, height, weight, quantity, width, image FROM ebe58_produit";
+//    $result = \DB::select($sql)[0];
+//    return $result;
+//}
+//
+////This function allows to show only one product according its category.
+//
+//function showOneProduct($id){
+//    $sql = "SELECT DISTINCT id, name, description, price, height, weight, quantity, width, image FROM ebe58_produit WHERE id = '$id'";
+//    $result = \DB::select($sql);
+//    return $result;
+//}
 
 function section(){
     $sql = "SELECT DISTINCT * FROM ebe58_services";
@@ -309,7 +309,7 @@ function section(){
 }
 
 function sectionExist($activity){
-    $sql ="SELECT product FROM ebe58_services WHERE product = '$activity'";
+    $sql ="SELECT id FROM ebe58_services WHERE id = '$activity'";
     $result =\DB::select($sql);
     return $result;
 }

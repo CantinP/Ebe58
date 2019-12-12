@@ -1027,124 +1027,6 @@ class Controller extends BaseController
 		}
 		abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
 	}
-
-  //part of anaïs
-
-   public function updateProduct(){
-    if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
-            $id = Input::get('id');
-		        $socials = socialDisp();
-            $section = section();
-            $product = showOneProduct($id)[0];
-            return view('updateProduct', ['product' => $product, 'section'=> $section, 'socials' => $socials]);
-        }
-        abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
-
-
-    }
-    //    this functon allows to update infos on a products.
-
-    public function updateInfos(Request $request){
-    if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
-        $id = Input::get('id');
-        $product_name = Input::get('productName');
-        $product_description = Input::get('productDescription');
-        $product_price = Input::get('productPrice');
-        $product_height = Input::get('productHeight');
-        $product_weight = Input::get('productWeight');
-        $product_quantity = Input::get('productQuantity');
-        $product_width = Input::get('productWidth');
-        $activities = [];
-        $activities = Input::get('activities');
-        $image = $request->file('img');
-
-        if(empty($image)){
-            $img_name = Input::get('lastimage');
-            if($product_name != '' || $product_description != '' || $product_price != ''|| $product_height != '' || $product_weight != '' || $product_quantity != '' || $product_width != ''|| $activities != ''){
-                productUpdate($id, $product_name, $product_description, $product_price, $product_height, $product_weight, $product_quantity, $product_width, $activities, $img_name);
-                return redirect()->to('/')->send();
-            }
-            elseif($product_name == '' || $product_description == '' || $product_price == ''|| $product_height == '' || $product_weight == '' || $product_quantity == '' || $product_width == ''|| $activities == ''){
-                return redirect()->to('/')->send();
-            }
-        }
-
-        $fldr = "product/";
-        if(!empty($image)){
-            $img_name = generate();
-            $img_name .= '.png';
-            move_uploaded_file($image, $fldr.$img_name);
-        }elseif(empty($image)){
-            $img_name = 'NULL';
-        }
-
-        if($product_name != '' || $product_description != '' || $product_price != ''|| $product_height != '' || $product_weight != '' || $product_quantity != '' || $product_width != ''|| $activities != ''){
-            productUpdate($id, $product_name, $product_description, $product_price, $product_height, $product_weight, $product_quantity, $product_width, $activities, $img_name);
-            return redirect()->to('/')->send();
-        }
-        elseif($product_name == '' || $product_description == '' || $product_price == ''|| $product_height == '' || $product_weight == '' || $product_quantity == '' || $product_width == ''|| $activities == ''){
-            return redirect()->to('/')->send();
-        }
-      }
-      abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
-    }
-    //    function to add product
-
-    public function addproduct(){
-    if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
-		        $socials = socialDisp();
-            $section = section();
-            return view('addproduct',['section'=> $section, 'socials' => $socials]);
-        }
-        abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
-
-    }
-    //    Add to database
-
-    public function sendProduct(Request $request){
-    if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
-            $product_name = Input::get('productName');
-            $product_description = Input::get('productDescription');
-            $product_price = Input::get('productPrice');
-            $product_height = Input::get('productHeight');
-            $product_weight = Input::get('productWeight');
-            $product_quantity = Input::get('productQuantity');
-            $product_width = Input::get('productWidth');
-            $activities = [];
-            $activities = Input::get('activities');
-            $image = $request->file('img');
-
-            $fldr = "product/";
-            if(!empty($image)){
-                $img_name = generate();
-                $img_name .= '.png';
-                move_uploaded_file($image, $fldr.$img_name);
-            }elseif(empty($image)){
-                $img_name = 'NULL';
-            }
-
-            if($product_name != '' || $product_description != '' || $product_price != ''|| $product_height != '' || $product_weight != '' || $product_quantity != '' || $product_width != ''|| $activities != ''){
-                productCreate($product_name, $product_description, $product_price, $product_height, $product_weight, $product_quantity, $product_width, $activities, $img_name);
-                return redirect()->to('/addproduct')->send();
-            }
-            elseif($product_name == '' || $product_description == '' || $product_price == ''|| $product_height == '' || $product_weight == '' || $product_quantity == '' || $product_width == ''|| $activities == ''){
-                return redirect()->to('/')->send();
-            }
-        }
-        abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
-
-    }
-    //    this function allows to delete product from the database
-
-    public function deleteProduct(){
-    if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
-            $id = Input::get('id');
-            productDelete($id);
-            return redirect()->to('/')->send();
-        }
-        abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
-    }
-
     public function admin(Request $request){
       if (Auth::user() && Auth::user()->rank === 2){
         $socials = socialDisp();
@@ -1205,21 +1087,6 @@ class Controller extends BaseController
       abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
     }
 
-
-    public function ajaxUpdatePsw(){
-      $password = Input::get('data-pass');
-      $email = $request->session()->get('email');
-
-      $oldPass = verifyPassword($email);
-
-      if (password_verify($password, $oldPass)) {
-        return 'true';
-      }
-      else {
-        return 'false';
-      }
-    }
-
 	public function forgotPassword(Request $request){
     $mail = Input::get('mail');
     $random = generate();
@@ -1252,6 +1119,7 @@ class Controller extends BaseController
 		return view('lost-password', ['socials' => $socials]);
 	}
 
+	//Password Changement Page
 	public function changePassword($link, Request $request) {
 		$link;
 		$socials = socialDisp();
@@ -1259,6 +1127,7 @@ class Controller extends BaseController
 
 	}
 
+	//Paswword Changement Function
 	public function changeThePassword(Request $request) {
 
     $errorMsg = [];
@@ -1322,5 +1191,123 @@ class Controller extends BaseController
       }
         abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
     }
+
+//  //part of anaïs
+//
+//   public function updateProduct(){
+//    if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
+//            $id = Input::get('id');
+//		        $socials = socialDisp();
+//            $section = section();
+//            $product = showOneProduct($id)[0];
+//            return view('updateProduct', ['product' => $product, 'section'=> $section, 'socials' => $socials]);
+//        }
+//        abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
+//
+//
+//    }
+//    //    this functon allows to update infos on a products.
+//
+//    public function updateInfos(Request $request){
+//    if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
+//        $id = Input::get('id');
+//        $product_name = Input::get('productName');
+//        $product_description = Input::get('productDescription');
+//        $product_price = Input::get('productPrice');
+//        $product_height = Input::get('productHeight');
+//        $product_weight = Input::get('productWeight');
+//        $product_quantity = Input::get('productQuantity');
+//        $product_width = Input::get('productWidth');
+//        $activities = [];
+//        $activities = Input::get('activities');
+//        $image = $request->file('img');
+//
+//        if(empty($image)){
+//            $img_name = Input::get('lastimage');
+//            if($product_name != '' || $product_description != '' || $product_price != ''|| $product_height != '' || $product_weight != '' || $product_quantity != '' || $product_width != ''|| $activities != ''){
+//                productUpdate($id, $product_name, $product_description, $product_price, $product_height, $product_weight, $product_quantity, $product_width, $activities, $img_name);
+//                return redirect()->to('/')->send();
+//            }
+//            elseif($product_name == '' || $product_description == '' || $product_price == ''|| $product_height == '' || $product_weight == '' || $product_quantity == '' || $product_width == ''|| $activities == ''){
+//                return redirect()->to('/')->send();
+//            }
+//        }
+//
+//        $fldr = "product/";
+//        if(!empty($image)){
+//            $img_name = generate();
+//            $img_name .= '.png';
+//            move_uploaded_file($image, $fldr.$img_name);
+//        }elseif(empty($image)){
+//            $img_name = 'NULL';
+//        }
+//
+//        if($product_name != '' || $product_description != '' || $product_price != ''|| $product_height != '' || $product_weight != '' || $product_quantity != '' || $product_width != ''|| $activities != ''){
+//            productUpdate($id, $product_name, $product_description, $product_price, $product_height, $product_weight, $product_quantity, $product_width, $activities, $img_name);
+//            return redirect()->to('/')->send();
+//        }
+//        elseif($product_name == '' || $product_description == '' || $product_price == ''|| $product_height == '' || $product_weight == '' || $product_quantity == '' || $product_width == ''|| $activities == ''){
+//            return redirect()->to('/')->send();
+//        }
+//      }
+//      abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
+//    }
+//    //    function to add product
+//
+//    public function addproduct(){
+//    if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
+//		        $socials = socialDisp();
+//            $section = section();
+//            return view('addproduct',['section'=> $section, 'socials' => $socials]);
+//        }
+//        abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
+//
+//    }
+//    //    Add to database
+//
+//    public function sendProduct(Request $request){
+//    if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
+//            $product_name = Input::get('productName');
+//            $product_description = Input::get('productDescription');
+//            $product_price = Input::get('productPrice');
+//            $product_height = Input::get('productHeight');
+//            $product_weight = Input::get('productWeight');
+//            $product_quantity = Input::get('productQuantity');
+//            $product_width = Input::get('productWidth');
+//            $activities = [];
+//            $activities = Input::get('activities');
+//            $image = $request->file('img');
+//
+//            $fldr = "product/";
+//            if(!empty($image)){
+//                $img_name = generate();
+//                $img_name .= '.png';
+//                move_uploaded_file($image, $fldr.$img_name);
+//            }elseif(empty($image)){
+//                $img_name = 'NULL';
+//            }
+//
+//            if($product_name != '' || $product_description != '' || $product_price != ''|| $product_height != '' || $product_weight != '' || $product_quantity != '' || $product_width != ''|| $activities != ''){
+//                productCreate($product_name, $product_description, $product_price, $product_height, $product_weight, $product_quantity, $product_width, $activities, $img_name);
+//                return redirect()->to('/addproduct')->send();
+//            }
+//            elseif($product_name == '' || $product_description == '' || $product_price == ''|| $product_height == '' || $product_weight == '' || $product_quantity == '' || $product_width == ''|| $activities == ''){
+//                return redirect()->to('/')->send();
+//            }
+//        }
+//        abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
+//
+//    }
+//    //    this function allows to delete product from the database
+//
+//    public function deleteProduct(){
+//    if (Auth::user() && Auth::user()->rank === 1 || Auth::user() && Auth::user()->rank === 2){
+//            $id = Input::get('id');
+//            productDelete($id);
+//            return redirect()->to('/')->send();
+//        }
+//        abort(403, 'Vous n\'avez pas les droits nécessaire pour voir cette page !');
+//    }
+
   use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

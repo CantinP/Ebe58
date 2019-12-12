@@ -44,8 +44,6 @@ Route::post('/oubli', 'Controller@forgotPassword');
 Route::post('/oubli/{link}', 'Controller@changePassword');
 Route::post('/changep', 'Controller@changeThePassword');
 
-Route::post('/ajaxChangePsw', 'Controller@ajaxUpdatePsw');
-
 Route::group(['middleware' => ['checkRank']], function () {
   Route::get('/administration', 'Controller@backoffice');
   Route::get('/texts', 'Controller@dispTexts');
@@ -54,9 +52,6 @@ Route::group(['middleware' => ['checkRank']], function () {
   Route::get('/activités-création', 'Controller@activityCreation');
   Route::get('/activités/modify', 'Controller@activityModify');
   Route::get('/partenaires/modify', 'Controller@partnerModify');
-  Route::get('/updateproduct', 'Controller@updateProduct');
-  Route::get('/addproduct', 'Controller@addproduct')->name('addproduct');
-  Route::get('/productlist/product/modify', 'Controller@updateProduct');
   Route::get('/modifySocial', 'Controller@modifySocial');
   Route::get('/social', 'Controller@social');
   Route::get('/modifyNews', 'Controller@newsModify');
@@ -64,6 +59,9 @@ Route::group(['middleware' => ['checkRank']], function () {
   Route::get('/admin', 'Controller@admin');
   Route::get('/modifyAdmin', 'Controller@modifyAdmin');
   Route::get('/modificationTextes', 'Controller@modifyText');
+//  Route::get('/updateproduct', 'Controller@updateProduct');
+//  Route::get('/addproduct', 'Controller@addproduct')->name('addproduct');
+//  Route::get('/productlist/product/modify', 'Controller@updateProduct');
 
   Route::post('/adminDelete', 'Controller@adminDelete');
   Route::post('/adminModify', 'Controller@adminUpdate');
@@ -76,12 +74,12 @@ Route::group(['middleware' => ['checkRank']], function () {
   Route::post('/partenaires/modify/send', 'Controller@modifyPartner');
   Route::post('/partenaires/modify/delete', 'Controller@deletePartner');
   Route::post('/activités/createSection', 'Controller@createSection');
-  Route::post('/addproduct/send', 'Controller@sendProduct');
-  Route::post('/productlist/product/modify/send', 'Controller@updateInfos');
-  Route::post('/productlist/product/modify/delete', 'Controller@deleteProduct');
   Route::post('/updateNews', 'Controller@newsUpdate');
   Route::post('/addNews', 'Controller@newsCreate');
   Route::post('/newsDelete', 'Controller@newsDelete');
   Route::post('/deleteTextes', 'Controller@deleteText');
   Route::post('/createTextes', 'Controller@textCreate');
+//  Route::post('/addproduct/send', 'Controller@sendProduct');
+//  Route::post('/productlist/product/modify/send', 'Controller@updateInfos');
+//  Route::post('/productlist/product/modify/delete', 'Controller@deleteProduct');
 });
